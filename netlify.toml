@@ -1,0 +1,4 @@
+# Legacy review hosting only. The community API runs on Cloudflare Pages.
+[build]
+  command = "npm run build"
+  publish = "dist"

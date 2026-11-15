@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://centralgta6.pages.dev/conta.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Central GTA 6">
+<meta property="og:title" content="Minha conta | Central GTA 6">
+<meta property="og:description" content="Explore Vice City, os protagonistas e os trailers oficiais de GTA VI em um portal independente de fãs.">
+<meta property="og:url" content="https://centralgta6.pages.dev/conta.html">
+<meta property="og:image" content="https://centralgta6.pages.dev/assets/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Central GTA 6 — portal brasileiro de GTA VI, com pôr do sol inspirado em Vice City">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Minha conta | Central GTA 6">
+<meta name="twitter:description" content="Personagens, cenários e trailers oficiais de GTA VI em um portal independente de fãs.">
+<meta name="twitter:image" content="https://centralgta6.pages.dev/assets/social-card.png"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b0b12"><meta name="description" content="Central GTA 6 — portal independente dedicado a GTA VI: personagens, trailers, notícias e o universo de Vice City."><title>Minha conta | Central GTA 6</title>
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/identity.css">
+
+<link rel="stylesheet" href="assets/community.css"></head>
+<body data-page="conta">
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<header><a class="brand" href="index.html"><img class="brand-emblem" src="assets/brand/emblem.svg" alt="" width="44" height="44"><span class="brand-words"><span class="brand-top">CENTRAL</span><span class="brand-bottom">GTA <b>6</b></span></span></a><button type="button" class="menu" aria-controls="nav" aria-label="Abrir menu" aria-expanded="false">☰</button>
+<nav id="nav" aria-label="Navegação principal"><a href="index.html">Início</a><a href="guia.html">O jogo</a><a href="universo.html">Universo</a><a href="personagens.html">Personagens</a><a href="noticias.html">Notícias</a><a href="trailers.html">Trailers</a><a href="mapa.html">Mapa</a><a href="forum.html">Fórum</a><a href="missoes.html">Missões</a><a href="perguntas.html">Dúvidas</a><a href="conta.html" class="nav-account" aria-current="page">Entrar</a></nav>
+</header><nav class="page-tabs" aria-label="Abas do portal"><a href="index.html">Início</a><a href="guia.html">O jogo</a><a href="universo.html">Universo</a><a href="personagens.html">Personagens</a><a href="noticias.html">Notícias</a><a href="trailers.html">Trailers</a><a href="mapa.html">Mapa</a><a href="forum.html">Fórum</a><a href="missoes.html">Missões</a><a href="perguntas.html">Dúvidas</a><a href="conta.html" class="nav-account" aria-current="page">Entrar</a></nav>
+<main id="conteudo" tabindex="-1" class="community-main">
+<div class="scroll-progress" aria-hidden="true"></div>
+<section class="page-hero"><div class="kicker">Seu espaço em Leonida</div><h1>SUA CONTA.<br>SEU PROGRESSO.</h1><p>Um apelido para participar. Uma conta para continuar de onde parou.</p></section>
+<div class="community-wrap">
+<noscript><p class="empty-state">Ative o JavaScript no navegador para usar o login, carregar a comunidade e salvar seu progresso. O restante do portal continua disponível.</p></noscript>
+<div id="page-status" class="notice" role="status" aria-live="polite" hidden></div>
+
+<section id="login-panel" class="surface account-card" aria-labelledby="login-title">
+  <span class="panel-label">Entre na comunidade</span><h2 id="login-title">O próximo capítulo<br>começa aqui.</h2>
+  <p>Use sua conta Google para comentar no fórum e acompanhar as missões concluídas em qualquer aparelho.</p>
+  <div id="google-login"><p class="muted">Verificando disponibilidade do login…</p></div>
+  <p class="small-print">Ao entrar, você concorda com as <a href="privacidade.html">regras e informações de privacidade</a>. Seu apelido será público; sua identificação de login não aparecerá nas publicações.</p>
+</section>
+<section id="account-panel" class="surface" aria-labelledby="profile-title" hidden>
+ <span class="panel-label">Bem-vindo à Central</span><h2 id="profile-title">MINHA CONTA</h2>
+ <form id="nickname-form" class="stack-form"><label for="nickname">Apelido público</label><input id="nickname" name="nickname" minlength="3" maxlength="24" required autocomplete="nickname"><p class="field-help">Use de 3 a 24 caracteres. Escolha um apelido que você queira mostrar no fórum.</p><button class="btn primary" type="submit">Salvar apelido</button></form>
+ <div class="account-actions"><a class="btn" href="forum.html">Ir para o fórum</a><a class="btn" href="missoes.html">Ver missões</a><button id="logout" class="btn" type="button">Sair da conta</button></div>
+ <details class="account-details"><summary>Identificação da conta</summary><p class="field-help">Este identificador é usado para configurar a administração do portal. Não é uma senha.</p><code id="account-id"></code><button id="copy-account-id" class="text-button" type="button">Copiar identificador</button></details>
+</section>
+<section id="admin-panel" class="surface admin-panel" aria-labelledby="admin-title" hidden>
+ <span class="panel-label">Administração</span><h2 id="admin-title">PAINEL DO PORTAL</h2>
+ <details><summary class="section-toggle">Cadastrar ou editar uma missão</summary>
+ <form id="mission-editor" class="stack-form">
+ <input type="hidden" name="id">
+ <label for="mission-title">Título</label><input id="mission-title" name="title" minlength="3" maxlength="120" required>
+ <label for="mission-summary">Resumo</label><textarea id="mission-summary" name="summary" minlength="10" maxlength="500" rows="3" required></textarea>
+ <label for="mission-body">Objetivos e guia</label><textarea id="mission-body" name="body" minlength="10" maxlength="8000" rows="8" required></textarea>
+ <div class="form-grid"><div><label for="mission-type">Tipo</label><select id="mission-type" name="type"><option value="principal">Principal</option><option value="secundaria">Secundária</option><option value="atividade">Atividade</option></select></div>
+ <div><label for="mission-character">Personagem</label><select id="mission-character" name="character"><option value="dupla">Lucia e Jason</option><option value="lucia">Lucia</option><option value="jason">Jason</option><option value="outros">Outros</option></select></div></div>
+ <label for="mission-region">Região</label><input id="mission-region" name="region" maxlength="80">
+ <label for="mission-rewards">Recompensas</label><textarea id="mission-rewards" name="rewards" maxlength="500" rows="2"></textarea>
+ <label for="mission-source">Fonte (endereço HTTPS)</label><input id="mission-source" name="source_url" type="url" maxlength="500" placeholder="https://…"><p class="field-help">Uma fonte é obrigatória para publicar. Sem publicação, a missão permanece como rascunho.</p>
+ <label class="check"><input name="spoiler" type="checkbox" checked>Contém spoilers</label>
+ <label class="check"><input name="published" type="checkbox">Publicar no catálogo</label>
+ <div class="form-actions"><button type="submit" class="btn primary">Salvar missão</button><button type="reset" class="btn">Novo rascunho</button></div>
+ </form></details>
+ <h3>MISSÕES CADASTRADAS</h3><div id="admin-missions" class="list-state">Carregando…</div><button id="admin-missions-more" class="btn" type="button" hidden>Carregar mais missões</button>
+ <h3>DENÚNCIAS PENDENTES</h3><div id="admin-reports" class="list-state">Carregando…</div><button id="refresh-reports" class="btn" type="button">Atualizar denúncias</button>
+</section>
+</div></main>
+<footer class="footer"><div><a href="index.html" aria-label="Central GTA 6 — início"><img class="footer-wordmark" src="assets/brand/wordmark.svg" alt="Central GTA 6 — direto de Leonida" width="270" height="90" loading="lazy"></a><p>Comunidade independente de fãs. Sem afiliação com a Rockstar Games ou Take-Two Interactive.</p></div><div class="footer-links"><a href="mapa.html">Mapa</a><a href="forum.html">Fórum</a><a href="missoes.html">Missões</a><a href="conta.html">Minha conta</a><a href="perguntas.html">Dúvidas</a><a href="privacidade.html">Privacidade e regras</a></div></footer>
+<script src="assets/app.js" defer></script>
+<script src="assets/community.js" type="module"></script>
+</body></html>
