@@ -4,7 +4,10 @@ Portal independente de fãs de GTA VI, com identidade cinematográfica inspirada
 
 ## Funcionalidades
 
-- Universo, protagonistas, fontes oficiais e trailers.
+- Marca própria, capa cinematográfica, oito perfis de personagens, seis regiões, notícias oficiais e trailers.
+- Guia essencial com ficha do jogo, história, fontes e doze perguntas frequentes.
+- Contagem até a data anunciada, com referência explícita de Brasília e estado de encerramento.
+- Mapa ilustrativo interativo com busca, filtros, fotos, zoom, arraste e navegação por teclado.
 - Perfis de Lucia e Jason com fotos oficiais e biografias expansíveis, inclusive sem JavaScript.
 - Conta Google e apelido público, fórum com tópicos, respostas e proteção de spoilers.
 - Denúncias, remoção das próprias publicações e painel administrativo de moderação.
@@ -20,7 +23,7 @@ Leia [Configuração pelo iPhone](docs/CONFIGURACAO-IPHONE.md) para as etapas do
 
 ## Estrutura
 
-- `index.html`, `conta.html`, `forum.html`, `missoes.html`, `privacidade.html`: páginas públicas.
+- `index.html`, `conta.html`, `forum.html`, `missoes.html`, `privacidade.html`, `guia.html`, `mapa.html`: páginas públicas.
 - `assets/`: estilos, JavaScript, imagens e ícone.
 - `functions/api/[[path]].js`: API no Cloudflare Pages Functions.
 - `lib/`: autenticação e estrutura do banco D1.
@@ -50,11 +53,16 @@ A Netlify antiga pode gerar uma prévia estática via `netlify.toml`; a API dest
 
 Os testes de servidor cobrem assinatura, audiência, expiração e nonce do login; CSRF; limites de publicação; permissões de remoção e moderação; rascunhos privados; progresso isolado por jogador; paginação; e revogação de sessões.
 
-As novas páginas foram verificadas no Chromium em larguras de 320, 390, 768 e 1440 px. Fluxos locais com contas fictícias cobrem apelido, tópicos, respostas, denúncias, administração, missões e progresso. O restante do portal também foi verificado em 820, 1024 e 1920 px e em orientação paisagem nas rodadas anteriores.
+A identidade, o guia e o mapa foram verificados no Chromium em larguras de 320, 390, 768, 1024, 1320, 1440 e 1920 px. Contagem regressiva testada antes da data, na virada e após o encerramento; mapa testado com links diretos, busca, filtros, ausência de resultados, zoom, teclado e restauração; guia e destinos também sem JavaScript. Todas as imagens visíveis carregaram na prévia local.
+
+As páginas da comunidade foram verificadas em larguras de 320, 390, 768 e 1440 px. Fluxos locais com contas fictícias cobrem apelido, tópicos, respostas, denúncias, administração, missões e progresso. O restante do portal também foi verificado em 820, 1024 e 1920 px e em orientação paisagem nas rodadas anteriores.
 
 A autorização real Google e o Safari/iOS em aparelho físico precisam ser validados depois da configuração do proprietário. A expiração de sete dias do cookie é da sessão do jogador, não um período de teste do serviço.
 
 ## Conteúdo e imagens
+
+Leia [Identidade, fontes e funcionamento do mapa e cronômetro](docs/IDENTIDADE-E-CONTEUDO.md) para os arquivos da marca, créditos e referências editoriais. O mapa é ilustrativo; o contador não estabelece horário oficial de desbloqueio.
+
 
 Perfis resumidos a partir da [apresentação oficial de pessoas e lugares](https://www.rockstargames.com/VI/only-in-leonida). Fotos pertencem à Rockstar Games; créditos visíveis na seção de personagens.
 
