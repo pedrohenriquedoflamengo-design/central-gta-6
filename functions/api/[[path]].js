@@ -67,7 +67,7 @@ async function userFor(request, env) {
 async function requireUser(request, env, admin = false) {
   const user = await userFor(request, env);
   if (!user) fail(401, 'Entre na sua conta para continuar.');
-  if (admin && !isAdmin(user, env)) fail(403, 'Acesso reservado à administração.');
+  if (admin && !await isAdmin(user, env)) fail(403, 'Acesso reservado à administração.');
   return user;
 }
 async function rate(db, user, action, maximum, window) {
@@ -128,7 +128,7 @@ export async function onRequest({ request, env }) {
     if (method !== 'GET' && method !== 'HEAD') protectOrigin(request);
     if (path === 'me' && method === 'GET') {
       const user = await userFor(request, env);
-      return json({ user: user ? publicUser(user, env) : null });
+      return json({ user: user ? await publicUser(user, env) : null });
     }
     if (path === 'logout' && method === 'POST') {
       const token = cookies(request)[SESSION_COOKIE];
@@ -147,7 +147,7 @@ export async function onRequest({ request, env }) {
       if (!/^[\p{L}\p{N} ._-]+$/u.test(nickname)) fail(400, 'Use letras, números, espaços, ponto, hífen ou sublinhado no apelido.');
       await rate(env.DB, user, 'nickname', 5, 3600);
       await env.DB.prepare('UPDATE users SET nickname=? WHERE id=?').bind(nickname, user.id).run();
-      return json({ user: publicUser({ ...user, nickname }, env) });
+      return json({ user: await publicUser({ ...user, nickname }, env) });
     }
     if (path === 'topics' && method === 'GET') {
       const cursor = url.searchParams.has('before') ? id(url.searchParams.get('before')) : Number.MAX_SAFE_INTEGER;
@@ -176,7 +176,7 @@ export async function onRequest({ request, env }) {
     if (topic && method === 'DELETE') {
       const user = await requireUser(request, env); const record = await publicTopic(env.DB, id(topic[1]));
       if (!record) fail(404, 'Tópico não encontrado.');
-      if (record.user_id !== user.id && !isAdmin(user, env)) fail(403, 'Você só pode remover suas próprias publicações.');
+      if (record.user_id !== user.id && !await isAdmin(user, env)) fail(403, 'Você só pode remover suas próprias publicações.');
       await env.DB.prepare('UPDATE topics SET hidden=1 WHERE id=?').bind(record.id).run();
       return json({ ok: true });
     }
@@ -201,7 +201,7 @@ export async function onRequest({ request, env }) {
     if (reply && method === 'DELETE') {
       const user = await requireUser(request, env); const record = await env.DB.prepare('SELECT * FROM replies WHERE id=? AND hidden=0').bind(id(reply[1])).first();
       if (!record) fail(404, 'Resposta não encontrada.');
-      if (record.user_id !== user.id && !isAdmin(user, env)) fail(403, 'Você só pode remover suas próprias publicações.');
+      if (record.user_id !== user.id && !await isAdmin(user, env)) fail(403, 'Você só pode remover suas próprias publicações.');
       await env.DB.prepare('UPDATE replies SET hidden=1 WHERE id=?').bind(record.id).run();
       return json({ ok: true });
     }
@@ -281,7 +281,7 @@ export async function onRequest({ request, env }) {
       if (action === 'hide') await env.DB.prepare(`UPDATE ${table} SET hidden=1 WHERE id=?`).bind(record.target_id).run();
       if (action === 'block' && target) {
         const user = await env.DB.prepare('SELECT * FROM users WHERE id=?').bind(target.user_id).first();
-        if (isAdmin(user, env) || target.user_id === admin.id) fail(400, 'A conta administradora não pode ser bloqueada.');
+        if (await isAdmin(user, env) || target.user_id === admin.id) fail(400, 'A conta administradora não pode ser bloqueada.');
         await env.DB.prepare('UPDATE users SET blocked=1 WHERE id=?').bind(target.user_id).run();
       }
       await env.DB.prepare('UPDATE reports SET resolved=1 WHERE id=?').bind(record.id).run();

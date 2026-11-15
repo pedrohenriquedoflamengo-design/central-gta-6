@@ -17,7 +17,8 @@
   "env": {
     "preview": {
       "vars": {
-        "GOOGLE_CLIENT_ID": "254410733779-1h2f4hil410d2h3hl62np1lfbakac4r0.apps.googleusercontent.com"
+        "GOOGLE_CLIENT_ID": "254410733779-1h2f4hil410d2h3hl62np1lfbakac4r0.apps.googleusercontent.com",
+        "ADMIN_GOOGLE_SUB_SHA256": "c7e8f633abb57cdab039f17f54a33bac476dc221c14ff6b8b02a6d9dacbb9578"
       },
       "d1_databases": [
         {

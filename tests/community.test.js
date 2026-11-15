@@ -98,3 +98,17 @@ test('logout revokes the session immediately and expires its cookie', async () =
   assert.match(response.headers.get('Set-Cookie'), /HttpOnly; Secure; SameSite=Lax; Max-Age=0/);
   assert.equal((await (await run(env, 'me', { user: 'player' })).json()).user, null);
 });
+
+test('hashed administrator identity grants only the configured Google account and cannot be forged in profile input', async () => {
+  const env = await fixture(); delete env.ADMIN_GOOGLE_SUB;
+  const { hashToken } = await import('../lib/auth.js');
+  env.ADMIN_GOOGLE_SUB_SHA256 = await hashToken('central-gta6:admin:google-owner');
+  assert.equal((await (await run(env, 'me', { user: 'owner' })).json()).user.admin, true);
+  assert.equal((await (await run(env, 'me', { user: 'player' })).json()).user.admin, false);
+  const forged = await run(env, 'profile', { user: 'player', method: 'PATCH', data: { nickname: 'Owner falso', google_sub: 'google-owner', admin: true } });
+  assert.equal((await forged.json()).user.admin, false);
+  assert.equal((await run(env, 'admin/reports', { user: 'player' })).status, 403);
+  assert.equal((await run(env, 'admin/reports', { user: 'owner' })).status, 200);
+  env.ADMIN_GOOGLE_SUB_SHA256 = 'invalid';
+  assert.equal((await (await run(env, 'me', { user: 'owner' })).json()).user.admin, false);
+});

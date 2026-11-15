@@ -58,6 +58,8 @@ O ID público do cliente fornecido pelo proprietário já está em `wrangler.jso
 
 ## 3. Primeiro acesso e administrador
 
+A conta indicada pelo proprietário foi habilitada na prévia por `ADMIN_GOOGLE_SUB_SHA256`, uma referência SHA-256 do identificador verificado, com prefixo de domínio `central-gta6:admin:`. O ID Google original não foi gravado no repositório. Essa configuração é aplicada somente à prévia; não concede administração automaticamente em produção. A referência deve ser alterada apenas pelo proprietário do repositório.
+
 Após o login Google válido, as tabelas são criadas automaticamente no D1 associado. A inicialização não apaga dados e não pode ser disparada por visitantes anônimos. O catálogo começa vazio, e o apelido inicial é gerado pelo portal para não expor automaticamente o nome pessoal do Google.
 
 Abra Minha conta > Identificação da conta e copie o identificador da conta do proprietário. No Cloudflare, configure `ADMIN_GOOGLE_SUB` como uma variável do tipo **Segredo**, com esse identificador e repita a implantação. O próximo acesso exibirá o painel administrativo. Nenhum jogador ganha administração automaticamente por ser o primeiro a entrar.
