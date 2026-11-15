@@ -297,3 +297,61 @@ nav a { font-size:11px; letter-spacing:1px; }
 @media(prefers-reduced-motion:reduce) { .world-image img { transition:none; } }
 .footer-wordmark { display:block; width:min(270px,100%); height:auto; margin-bottom:20px; }
 .screen-reader-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; border:0; }
+
+/* Separate destinations replace the former one-page editorial feed. */
+#nav a[aria-current="page"] { color:#ffd1bc; box-shadow:inset 0 -2px #ffa7be; }
+.page-tabs { display:none; }
+.home-directory { width:min(1200px,90%); margin:55px auto 75px; }
+.home-directory h2 { font-size:clamp(36px,4vw,54px); line-height:1; margin:18px 0 28px; }
+.home .hero { min-height:720px; padding-top:135px; padding-bottom:110px; }
+.home .hero h1 { font-size:clamp(72px,7vw,108px); }
+.home .launch-countdown { margin-top:35px; }
+.topic-page { background:radial-gradient(ellipse at 90% 0,#47263c55,transparent 38%),var(--bg); }
+.topic-section { padding-top:155px; padding-bottom:70px; min-height:65svh; }
+.topic-section h1, .faq-section h1 { font-size:clamp(52px,7vw,96px); line-height:.97; letter-spacing:-.025em; margin:20px 0 28px; text-shadow:none; }
+.topic-section .section-head { align-items:center; }
+.topic-section .section-head > div:first-child { min-width:0; flex:1.1; }
+.topic-section .section-head > .section-intro { flex:1; }
+.topic-section .section-intro { font-size:14px; line-height:1.9; }
+.topic-page .feature-visual { background:linear-gradient(#180e2440,#140c1b55),url('world/vice-night.jpg') center/cover; }
+.topic-page .feature-copy { background:#110d1bd9; }
+.topic-page .more-videos { background:linear-gradient(130deg,#21192d,#382235); padding:35px; margin-top:30px; border:1px solid var(--line); border-radius:6px; }
+.topic-page .more-videos h3 { font-size:34px; margin:15px 0; }
+.topic-page .more-videos p { font-size:14px; line-height:1.8; color:var(--muted); }
+.topic-reading { width:min(1000px,90%); margin-inline:auto; padding-bottom:60px; }
+.topic-reading-first { padding-top:125px; }
+.topic-page .guide-hero { max-width:1120px; }
+.topic-page .guide-note { margin-top:25px; }
+.topic-page .world-card { scroll-margin-top:110px; }
+@media(max-width:1320px) {
+ #nav { top:100%; max-height:calc(100svh - 72px); }
+ .page-tabs { position:fixed; top:72px; left:0; right:0; z-index:25; width:100%; height:52px; max-height:none; flex-direction:row; justify-content:flex-start; align-items:stretch; gap:8px; padding:0 5%; overflow-x:auto; overflow-y:hidden; border-bottom:1px solid #d2a7c83b; background:#15101ff5; overscroll-behavior-x:contain; scrollbar-width:thin; scrollbar-color:#84617c transparent; }
+ header[data-menu-ready] + .page-tabs { display:flex; }
+ header.scrolled + .page-tabs { top:70px; }
+ .page-tabs a { flex:0 0 auto; white-space:nowrap; padding:0 14px; margin:0; min-height:48px; border:0; border-radius:0; font-size:11px; letter-spacing:.8px; color:#cdb4c8; background:transparent; }
+ .page-tabs a[aria-current="page"] { color:#ffcfbc; box-shadow:inset 0 -3px #ffa7be; background:#ffc5d007; }
+ .has-page-tabs .page-hero { padding-top:175px; }
+ .topic-section { padding-top:175px; }
+ .topic-reading-first { padding-top:145px; }
+ html { scroll-padding-top:145px; }
+ .topic-page .world-card { scroll-margin-top:10px; }
+}
+@media(max-width:760px) {
+ .page-tabs { top:70px; gap:2px; }
+ header.scrolled + .page-tabs { top:65px; }
+ .page-tabs a { padding-inline:12px; font-size:10px; }
+ .has-page-tabs .page-hero { padding-top:160px; }
+ .home .hero { min-height:760px; padding-top:225px; padding-bottom:105px; }
+ .home .hero h1 { font-size:clamp(48px,13vw,82px); }
+ .home .hero-bottom { bottom:30px; }
+ .home-directory { margin-block:40px 60px; }
+ .topic-section { padding-top:165px; padding-bottom:55px; }
+ .topic-section h1, .faq-section h1 { font-size:clamp(42px,11vw,70px); }
+ .topic-section .section-head { display:block; }
+ .topic-section .section-head .section-intro { margin-top:22px; }
+ .topic-reading-first { padding-top:135px; }
+ .topic-page .more-videos { padding:25px; }
+ .topic-page .more-videos h3 { font-size:28px; }
+ .topic-reading { padding-bottom:35px; }
+}
+.topic-page h1, .topic-page h2, .topic-reading .editorial-link { overflow-wrap:anywhere; }

@@ -5,7 +5,8 @@ Portal independente de fãs de GTA VI, com identidade cinematográfica inspirada
 ## Funcionalidades
 
 - Marca própria, capa cinematográfica, oito perfis de personagens, seis regiões, notícias oficiais e trailers.
-- Guia essencial com ficha do jogo, história, fontes e doze perguntas frequentes.
+- Páginas por assunto: jogo, universo, personagens, notícias, trailers e dúvidas.
+- Navegação com aba atual marcada e faixa horizontal de abas em telas menores.
 - Contagem até a data anunciada, com referência explícita de Brasília e estado de encerramento.
 - Mapa ilustrativo interativo com busca, filtros, fotos, zoom, arraste e navegação por teclado.
 - Perfis de Lucia e Jason com fotos oficiais e biografias expansíveis, inclusive sem JavaScript.
@@ -23,7 +24,7 @@ Leia [Configuração pelo iPhone](docs/CONFIGURACAO-IPHONE.md) para as etapas do
 
 ## Estrutura
 
-- `index.html`, `conta.html`, `forum.html`, `missoes.html`, `privacidade.html`, `guia.html`, `mapa.html`: páginas públicas.
+- `index.html`, `conta.html`, `forum.html`, `missoes.html`, `privacidade.html`, `guia.html`, `mapa.html`, `universo.html`, `personagens.html`, `noticias.html`, `trailers.html`, `perguntas.html`: páginas públicas.
 - `assets/`: estilos, JavaScript, imagens e ícone.
 - `functions/api/[[path]].js`: API no Cloudflare Pages Functions.
 - `lib/`: autenticação e estrutura do banco D1.
@@ -50,6 +51,8 @@ A publicação usa **`npm run build`** e o diretório **`dist`**. Testes, depend
 A Netlify antiga pode gerar uma prévia estática via `netlify.toml`; a API desta etapa funciona somente no Cloudflare. Use a prévia do Cloudflare para validar a comunidade.
 
 ## Validação
+
+A organização por páginas foi verificada em sete larguras (320 a 1920 px), com aba atual visível, menu, navegação de volta, redirecionamento dos links antigos, acesso às regiões a partir do mapa, doze FAQs, imagens e navegação sem JavaScript. A página inicial não carrega as seções completas dos outros assuntos.
 
 Os testes de servidor cobrem assinatura, audiência, expiração e nonce do login; CSRF; limites de publicação; permissões de remoção e moderação; rascunhos privados; progresso isolado por jogador; paginação; e revogação de sessões.
 

@@ -1,5 +1,19 @@
 'use strict';
 
+// Keep previously shared one-page links usable after moving each topic.
+const routePage = location.pathname.split('/').pop() || 'index.html';
+const formerHomeSections = { '#universo': 'universo.html', '#personagens': 'personagens.html', '#noticias': 'noticias.html', '#trailers': 'trailers.html', '#visao-geral': 'guia.html', '#lucia': 'personagens.html#lucia', '#jason': 'personagens.html#jason' };
+const formerGuideSections = { '#elenco': 'personagens.html', '#destinos': 'universo.html', '#materiais': 'trailers.html', '#perguntas': 'perguntas.html' };
+for (const id of ['vice-city', 'keys', 'port-gellhorn', 'grassrivers', 'ambrosia', 'kalaga']) formerGuideSections[`#${id}`] = `universo.html#${id}`;
+function redirectFormerSection() {
+  const formerDestination = routePage === 'index.html' ? formerHomeSections[location.hash] : routePage === 'guia.html' ? formerGuideSections[location.hash] : undefined;
+  if (formerDestination) location.replace(new URL(formerDestination, location.href).href);
+}
+redirectFormerSection();
+addEventListener('hashchange', redirectFormerSection);
+addEventListener('pageshow', event => { if (event.persisted) redirectFormerSection(); });
+
+
 const header = document.querySelector('header');
 const menu = document.querySelector('.menu');
 const nav = document.querySelector('#nav');
@@ -86,3 +100,13 @@ if ('IntersectionObserver' in window) {
 document.addEventListener('visibilitychange', () => {
   document.documentElement.classList.toggle('page-hidden', document.hidden);
 });
+
+// On small screens the current destination remains visible in the tab strip.
+const pageTabs = document.querySelector('.page-tabs');
+function showCurrentTab() {
+  const current = pageTabs?.querySelector('[aria-current="page"]');
+  if (current && mobileMenu.matches) pageTabs.scrollLeft = current.offsetLeft - (pageTabs.clientWidth - current.clientWidth) / 2;
+}
+showCurrentTab();
+mobileMenu.addEventListener('change', showCurrentTab);
+if (document.fonts) document.fonts.ready.then(showCurrentTab);

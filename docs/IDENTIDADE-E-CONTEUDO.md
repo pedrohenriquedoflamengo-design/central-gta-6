@@ -11,7 +11,23 @@ A marca da Central combina um emblema original de horizonte, via e palmeira com 
 
 ## Conteúdo editorial
 
-A página inicial reúne sinopse, dois protagonistas, seis perfis complementares (Real Dimez é um duo), seis regiões, três links para notícias oficiais e trailers. `guia.html` acrescenta ficha do jogo, história, destinos, fontes, biblioteca de mídia e doze perguntas frequentes. Nenhuma missão fictícia é cadastrada.
+O portal usa páginas separadas por assunto. A página inicial apresenta a marca, o cronômetro e atalhos; os textos completos ficam nas abas de cada tema. Nenhuma missão fictícia é cadastrada.
+
+| Aba | Página | Conteúdo |
+| --- | --- | --- |
+| Início | `index.html` | Apresentação, cronômetro e atalhos |
+| O jogo | `guia.html` | Ficha, história e fontes |
+| Universo | `universo.html` | Seis regiões e imagens oficiais |
+| Personagens | `personagens.html` | Dois protagonistas e seis perfis complementares; Real Dimez é um duo |
+| Notícias | `noticias.html` | Três anúncios com data e fonte |
+| Trailers | `trailers.html` | Dois trailers e biblioteca oficial de mídia |
+| Mapa | `mapa.html` | Explorador ilustrativo interativo |
+| Fórum | `forum.html` | Tópicos e respostas da comunidade |
+| Missões | `missoes.html` | Catálogo e progresso individual |
+| Dúvidas | `perguntas.html` | Doze perguntas frequentes |
+| Entrar | `conta.html` | Conta e administração |
+
+Os menus usam links normais, com a página atual identificada por `aria-current`. Em telas menores, uma faixa de abas horizontal permite trocar de assunto sem abrir o menu. A navegação entre páginas também funciona sem JavaScript. Links antigos como `index.html#personagens` e `guia.html#keys` são encaminhados pelo script para os destinos correspondentes.
 
 Fontes consultadas em 14/11/2026:
 
@@ -19,7 +35,7 @@ Fontes consultadas em 14/11/2026:
 - https://www.rockstargames.com/VI/only-in-leonida — personagens.
 - https://www.rockstargames.com/VI/media/screenshots — imagens e nomes de cenários.
 - https://www.rockstargames.com/VI/media/videos — biblioteca de vídeos oficiais.
-- https://www.rockstargames.com/newswire — anúncios com links individuais na página inicial.
+- https://www.rockstargames.com/newswire — anúncios com links individuais em `noticias.html`.
 
 Textos originais resumem fatos; rumores, requisitos de PC, tamanho do mapa, localizações exatas, missões e datas não divulgadas não são completados com suposições. Atualizações são editoriais, não um feed automático.
 
@@ -29,7 +45,7 @@ Textos originais resumem fatos; rumores, requisitos de PC, tamanho do mapa, loca
 
 ## Mapa interativo
 
-`mapa.html` tem busca, filtros, seleção por marcador ou lista, fotos, link para o guia, zoom de 100% a 200%, arraste após zoom, setas do teclado e restauração. A URL preserva a região selecionada (`mapa.html#keys`, por exemplo). Busca e filtros operam localmente, sem API paga ou consulta ao banco. Todos os destinos também ficam acessíveis sem JavaScript.
+`mapa.html` tem busca, filtros, seleção por marcador ou lista, fotos, link para a região em `universo.html`, zoom de 100% a 200%, arraste após zoom, setas do teclado e restauração. A URL preserva a região selecionada (`mapa.html#keys`, por exemplo). Busca e filtros operam localmente, sem API paga ou consulta ao banco. Todos os destinos também ficam acessíveis sem JavaScript.
 
 O desenho é uma **composição ilustrativa** criada para explorar as regiões. Não é um mapa oficial: posições, formato, dimensões, distâncias e linhas decorativas não indicam coordenadas ou rotas do jogo. A interface explica essa limitação junto ao título e às fontes. Não há dados de missões ou colecionáveis inventados.
 

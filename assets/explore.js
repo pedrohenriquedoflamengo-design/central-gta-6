@@ -57,7 +57,7 @@ if (explorer) {
     explorer.querySelector('[data-region-announcement]').textContent = `Região selecionada: ${data.name}. Detalhes disponíveis abaixo do mapa.`;
     detail.querySelector('[data-region-tag]').textContent = data.tag;
     detail.querySelector('[data-region-description]').textContent = data.description;
-    detail.querySelector('[data-region-link]').href = `guia.html#${id}`;
+    detail.querySelector('[data-region-link]').href = `universo.html#${id}`;
     markers.forEach(marker => marker.setAttribute('aria-pressed', String(marker.dataset.place === id)));
     options.forEach(item => item.querySelector('button').setAttribute('aria-pressed', String(item.dataset.region === id)));
     if (saveHash) history.replaceState(null, '', `#${id}`);
