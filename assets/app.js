@@ -1,7 +1,9 @@
 'use strict';
 
 // Keep previously shared one-page links usable after moving each topic.
-const routePage = location.pathname.split('/').pop() || 'index.html';
+const routeSegment = location.pathname.replace(/\/+$/, '').split('/').pop() || 'index';
+// Cloudflare serves /personagens.html at the clean URL /personagens.
+const routePage = routeSegment.endsWith('.html') ? routeSegment : `${routeSegment}.html`;
 const formerHomeSections = { '#universo': 'universo.html', '#personagens': 'personagens.html', '#noticias': 'noticias.html', '#trailers': 'trailers.html', '#visao-geral': 'guia.html', '#lucia': 'personagens.html#lucia', '#jason': 'personagens.html#jason' };
 const formerGuideSections = { '#elenco': 'personagens.html', '#destinos': 'universo.html', '#materiais': 'trailers.html', '#perguntas': 'perguntas.html' };
 for (const id of ['vice-city', 'keys', 'port-gellhorn', 'grassrivers', 'ambrosia', 'kalaga']) formerGuideSections[`#${id}`] = `universo.html#${id}`;
