@@ -1262,7 +1262,7 @@ nav a  {
 
 }
 
-@media (max-width: 1000px)  {
+@media (max-width: 1200px)  {
 
  header  {
      height: 65px;
@@ -1414,3 +1414,6 @@ nav a  {
 
 }
 .page-hidden *, .page-hidden *::before, .page-hidden *::after { animation-play-state: paused !important; }
+
+nav { gap: 18px; }
+@media (max-width: 1200px) { nav { gap: 8px; } }

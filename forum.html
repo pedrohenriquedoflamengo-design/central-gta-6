@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://centralgta6.pages.dev/forum.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Central GTA 6">
+<meta property="og:title" content="Fórum | Central GTA 6">
+<meta property="og:description" content="Explore Vice City, os protagonistas e os trailers oficiais de GTA VI em um portal independente de fãs.">
+<meta property="og:url" content="https://centralgta6.pages.dev/forum.html">
+<meta property="og:image" content="https://centralgta6.pages.dev/assets/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Central GTA 6 — portal brasileiro de GTA VI, com pôr do sol inspirado em Vice City">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fórum | Central GTA 6">
+<meta name="twitter:description" content="Personagens, cenários e trailers oficiais de GTA VI em um portal independente de fãs.">
+<meta name="twitter:image" content="https://centralgta6.pages.dev/assets/social-card.png"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b0b12"><meta name="description" content="Central GTA 6 — portal independente dedicado a GTA VI: personagens, trailers, notícias e o universo de Vice City."><title>Fórum | Central GTA 6</title>
+<link rel="stylesheet" href="assets/styles.css">
+
+<link rel="stylesheet" href="assets/community.css"></head>
+<body data-page="forum">
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<header><a class="brand" href="index.html#inicio">CENTRAL <span>GTA 6</span><span>.</span></a><button type="button" class="menu" aria-controls="nav" aria-label="Abrir menu" aria-expanded="false">☰</button>
+<nav id="nav" aria-label="Navegação principal"><a href="index.html#inicio">Início</a><a href="index.html#universo">Universo</a><a href="index.html#personagens">Personagens</a><a href="index.html#noticias">Destaques</a><a href="index.html#trailers" class="nav-cta">Trailers ↗</a><a href="forum.html">Fórum</a><a href="missoes.html">Missões</a><a href="conta.html" class="nav-account">Entrar</a>
+</nav>
+</header>
+<main id="conteudo" tabindex="-1" class="community-main">
+<div class="scroll-progress" aria-hidden="true"></div>
+<section class="page-hero"><div class="kicker">Comunidade / Vice City e além</div><h1>A CONVERSA<br>COMEÇA AQUI.</h1><p>Dúvidas, descobertas e teorias. Um espaço para quem vive o universo de GTA VI.</p></section>
+<div class="community-wrap">
+<noscript><p class="empty-state">Ative o JavaScript no navegador para usar o login, carregar a comunidade e salvar seu progresso. O restante do portal continua disponível.</p></noscript>
+<div id="page-status" class="notice" role="status" aria-live="polite" hidden></div>
+
+<div id="forum-list-view">
+ <section class="surface forum-tools" aria-label="Filtrar tópicos"><form id="topic-filter" class="filter-form"><div><label for="topic-category">Categoria</label><select id="topic-category" name="category"><option value="">Todas as conversas</option><option value="geral">Geral</option><option value="duvidas">Dúvidas</option><option value="teorias">Teorias</option><option value="missoes">Missões</option></select></div><button class="btn" type="submit">Filtrar</button></form><a class="subtle-link" href="privacidade.html">Regras da comunidade</a></section>
+ <p class="guest-message" data-guest hidden><a href="conta.html">Entre na sua conta</a> para criar tópicos e responder. A leitura é aberta a todos.</p>
+ <details id="topic-composer" class="surface composer" data-member hidden><summary class="section-toggle">Criar tópico <span aria-hidden="true">+</span></summary>
+ <form id="topic-form" class="stack-form"><label for="topic-title">Título</label><input id="topic-title" name="title" minlength="5" maxlength="120" required>
+ <label for="new-topic-category">Categoria</label><select id="new-topic-category" name="category"><option value="geral">Geral</option><option value="duvidas">Dúvidas</option><option value="teorias">Teorias</option><option value="missoes">Missões</option></select>
+ <label for="topic-body">Sua mensagem</label><textarea id="topic-body" name="body" minlength="10" maxlength="6000" rows="6" required></textarea>
+ <label class="check"><input type="checkbox" name="spoiler">Este tópico contém spoilers</label><button class="btn primary" type="submit">Publicar tópico</button></form></details>
+ <div id="topics" class="topic-list" aria-live="polite"><p class="empty-state">Carregando conversas…</p></div>
+ <button id="topics-more" class="btn load-more" type="button" hidden>Carregar mais tópicos</button>
+</div>
+<section id="forum-topic-view" hidden aria-label="Conversa"><a class="subtle-link" href="forum.html">← Todas as conversas</a><div id="topic-detail"></div>
+ <h2 class="list-heading">RESPOSTAS</h2><div id="replies" class="topic-list"></div><button id="replies-more" class="btn load-more" type="button" hidden>Carregar mais respostas</button>
+ <p class="guest-message" data-guest hidden><a href="conta.html">Entre na sua conta</a> para participar desta conversa.</p>
+ <form id="reply-form" class="surface stack-form" data-member hidden><label for="reply-body">Sua resposta</label><textarea id="reply-body" name="body" minlength="2" maxlength="4000" rows="5" required></textarea><label class="check"><input type="checkbox" name="spoiler">Minha resposta contém spoilers</label><button class="btn primary" type="submit">Publicar resposta</button></form>
+</section>
+</div></main>
+<footer class="footer"><div><a class="brand" href="index.html">CENTRAL <span>GTA 6</span>.</a><p>Comunidade independente de fãs. Sem afiliação com a Rockstar Games ou Take-Two Interactive.</p></div><div class="footer-links"><a href="forum.html">Fórum</a><a href="missoes.html">Missões</a><a href="conta.html">Minha conta</a><a href="privacidade.html">Privacidade e regras</a></div></footer>
+<script src="assets/app.js" defer></script>
+<script src="assets/community.js" type="module"></script>
+</body></html>

@@ -4,7 +4,7 @@ const header = document.querySelector('header');
 const menu = document.querySelector('.menu');
 const nav = document.querySelector('#nav');
 const progress = document.querySelector('.scroll-progress');
-const mobileMenu = matchMedia('(max-width: 1000px)');
+const mobileMenu = matchMedia('(max-width: 1200px)');
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 
 function setMenu(open, restoreFocus = false) {

@@ -1,0 +1,22 @@
+{
+  "name": "central-gta-6",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node tests/community.test.js",
+    "dev": "npm run build && wrangler pages dev dist --d1 DB=local-central-gta6 --port 4175",
+    "check:functions": "wrangler pages functions build --outdir /tmp/central-gta6-functions",
+    "build": "node scripts/build.mjs",
+    "test:cloudflare": "node tests/cloudflare-smoke.js"
+  },
+  "dependencies": {
+    "jose": "^6.2.17"
+  },
+  "devDependencies": {
+    "wrangler": "^4.162.0",
+    "miniflare": "5.20261113.0-beta"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
