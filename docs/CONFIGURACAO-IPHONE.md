@@ -21,19 +21,23 @@ Os arquivos estáticos usam somente as rotas estáticas do Pages. `_routes.json`
 - https://developers.cloudflare.com/workers/platform/pricing/
 - https://developers.google.com/identity/gsi/web/guides/overview
 
-## 1. Configurar a prévia no Cloudflare
+## 1. Configuração atual por arquivo
 
-O projeto `centralgta6` já existe. O banco criado pelo proprietário foi associado com nome de variável `DB`.
+`wrangler.json` define explicitamente o cliente OAuth público e a associação DB para a prévia. O ID do banco foi fornecido pelo proprietário a partir do endereço do D1 no painel. Nenhuma senha ou segredo Google é versionado.
 
-No painel do projeto, em Configurações > Builds e implantações, use as configurações do ambiente de **prévia**, mantendo produção inalterada enquanto main ainda contém a versão antiga:
+Para a validação inicial, a prévia usa o único banco que o proprietário criou, `central-gta6`, ainda sem dados no momento da configuração. O site estático atual da main não consulta esse banco. Não inserir exemplos fictícios nele: os testes automatizados usam apenas bancos locais. Antes de abrir a comunidade publicamente, separar o banco de teste e atualizar o database_id de env.preview. A configuração de nível superior preserva a associação prevista para produção, mas só será aplicada à produção após aprovação e implantação da main.
 
-- Branch de prévia: `fix/responsividade-acessibilidade`.
-- Predefinição: Nenhum.
-- Comando: `npm run build`.
-- Diretório de saída: `dist`.
-- Node.js: 22 ou superior.
+O painel usa este comando de build compatível com a main antiga e a branch nova:
 
-Para isolamento de dados, crie um segundo D1 gratuito chamado `central-gta6-teste` e associe-o à variável `DB` no ambiente **prévia**. O banco `central-gta6` fica reservado para produção. Verifique se a prévia dessa branch está habilitada e repita a implantação após salvar as configurações.
+```sh
+if [ -f package.json ]; then npm run build; else mkdir -p dist && cp index.html dist/; fi
+```
+
+Diretório de saída: `dist`. As prévias estão habilitadas para branches que não sejam main. A URL estável confirmada da branch é:
+
+https://fix-responsividade-acessibil.centralgta6.pages.dev
+
+Não é necessário localizar um seletor de ambiente na interface móvel para alterar o cliente Google ou a associação DB: esses valores agora são definidos no arquivo e aplicados pela próxima implantação da branch.
 
 ## 2. Criar o cliente Google no navegador
 
@@ -50,13 +54,13 @@ Adicione também a origem **exata** da prévia que será usada e o redirecioname
 
 O aplicativo usa apenas identidade básica, não pede acesso a Gmail, Drive ou outros serviços. Antes de abrir o login para todos, conclua a configuração de público/branding e retire-o do modo de teste seguindo as exigências que o Google apresentar. Não contorne validações do Google.
 
-Copie o ID público do cliente terminado em `.apps.googleusercontent.com`. No Cloudflare, Configurações > Variáveis e segredos, defina `GOOGLE_CLIENT_ID` no ambiente de prévia e repita a implantação. Não envie a senha Google ou um segredo OAuth ao repositório.
+O ID público do cliente fornecido pelo proprietário já está em `wrangler.json`. Registre também a origem estável da prévia no cliente Google: `https://fix-responsividade-acessibil.centralgta6.pages.dev`, e seu redirecionamento exato `https://fix-responsividade-acessibil.centralgta6.pages.dev/api/auth/google`. Não envie a senha Google ou um segredo OAuth ao repositório.
 
 ## 3. Primeiro acesso e administrador
 
 Após o login Google válido, as tabelas são criadas automaticamente no D1 associado. A inicialização não apaga dados e não pode ser disparada por visitantes anônimos. O catálogo começa vazio, e o apelido inicial é gerado pelo portal para não expor automaticamente o nome pessoal do Google.
 
-Abra Minha conta > Identificação da conta e copie o identificador da conta do proprietário. No Cloudflare, configure a variável `ADMIN_GOOGLE_SUB` com esse identificador e repita a implantação. O próximo acesso exibirá o painel administrativo. Nenhum jogador ganha administração automaticamente por ser o primeiro a entrar.
+Abra Minha conta > Identificação da conta e copie o identificador da conta do proprietário. No Cloudflare, configure `ADMIN_GOOGLE_SUB` como uma variável do tipo **Segredo**, com esse identificador e repita a implantação. O próximo acesso exibirá o painel administrativo. Nenhum jogador ganha administração automaticamente por ser o primeiro a entrar.
 
 O identificador não é uma senha, mas não é exibido no fórum. O banco armazena o identificador Google e o apelido; não armazena sua senha nem o ID token retornado pelo Google.
 
