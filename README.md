@@ -28,3 +28,16 @@ Verificado no Chromium em 320×740, 390×844, 768×1024, 820×1180, 1024×768, 1
 Safari/iOS e aparelhos físicos ainda precisam de validação. Não foram medidas notas Lighthouse.
 
 A revisão deve ocorrer na branch `fix/responsividade-acessibilidade`, antes de integrar à `main`. Deploy Previews dependem da configuração da Netlify; não há mudança na hospedagem nesta correção.
+
+## Perfis dos protagonistas
+
+A seção de personagens apresenta Lucia Caminos e Jason Duval com imagens oficiais, resumo e biografia expansível. O controle usa `details`/`summary` nativos: funciona por toque, mouse e teclado, inclusive sem JavaScript. As duas biografias podem ficar abertas ao mesmo tempo.
+
+Informações resumidas em português a partir da [apresentação oficial de pessoas e lugares da Rockstar Games](https://www.rockstargames.com/VI/only-in-leonida). Nenhum rumor ou detalhe de trama além da apresentação oficial foi acrescentado. Os arquivos de imagem foram preservados como publicados pela Rockstar, armazenados localmente, com carregamento tardio e dimensões reservadas. Direitos das imagens pertencem à Rockstar Games.
+
+Fontes das imagens:
+
+- Lucia: https://www.rockstargames.com/VI/_next/static/media/mobile.01e24lvhdu677.jpg
+- Jason: https://www.rockstargames.com/VI/_next/static/media/mobile.0jzys13fkqnae.jpg
+
+Os novos perfis foram verificados nas mesmas oito dimensões indicadas acima, incluindo abertura/fechamento por clique, Enter e Espaço, carregamento das imagens, ausência de rolagem horizontal e modos sem JavaScript/IntersectionObserver.
